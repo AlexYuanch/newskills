@@ -1,0 +1,49 @@
+{
+  "name": "skill-scout",
+  "version": "1.1.0",
+  "description": "Conversation-native skill discovery for Codex and Claude Code, with optional local hooks",
+  "main": "dist/index.js",
+  "bin": {
+    "skill-scout": "dist/index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "tsc --noEmit",
+    "prepack": "npm run skill:check && npm run build",
+    "skill:sync": "node scripts/sync-skill.mjs",
+    "skill:check": "node scripts/sync-skill.mjs --check",
+    "privacy:check": "node scripts/privacy-check.mjs",
+    "release:public": "node scripts/prepare-public.mjs"
+  },
+  "keywords": [
+    "claude-code",
+    "codex",
+    "agent-skills",
+    "skills",
+    "project-scanner",
+    "recommendation",
+    "cli"
+  ],
+  "author": "NewSkills contributors",
+  "license": "MIT",
+  "files": ["dist", ".agents/skills/skill-scout", ".claude/skills/skill-scout", "scripts", "docs", "README.md", "ARCHITECTURE.md", "PRIVACY.md", "LICENSE"],
+  "dependencies": {
+    "commander": "^12.1.0",
+    "chalk": "^5.3.0",
+    "cli-table3": "^0.6.5",
+    "globby": "^14.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0",
+    "tsx": "^4.19.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
